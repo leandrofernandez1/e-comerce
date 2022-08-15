@@ -1,0 +1,50 @@
+
+
+.producto {
+    display: flex;
+    justify-content: left;
+    border: double 4px black;
+    width: 80%;
+    height: 12em;
+    margin: 1em auto;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: azure;
+    padding: 10px;
+}
+
+ #imagen {
+    width: 15em;
+}
+ 
+.pContenido {
+    margin-top: .2em;
+    margin-left: .3em;
+    font-size: 20px;
+}
+
+#pDes {
+    font-size: 16px;
+}
+
+.titulo {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 20px;
+    font-family: sans-serif;
+}
+
+.sub-titulo {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.sp {
+    font-weight: bold;
+}
+
+.vendidos {
+    margin-top: 80px;
+    font-size: 15px;
+}
+
