@@ -12,3 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+
+
+let enviarLogin = "https://leandrofernandez1.github.io/e-comerce/login.html";
+window.location = enviarLogin;
