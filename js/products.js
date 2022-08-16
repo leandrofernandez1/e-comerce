@@ -9,28 +9,28 @@ function obtenerProductos(){
     })
      .then (datos => {
         const productos = datos.products;
-        contenedor.innerHTML = `<p class="titulo">Productos</p> <br> 
-                                <p class="sub-titulo">Verás aqui todos los productos de la categoría <span class="sp">Autos</span></p>` 
-        for(let producto of productos){
-            console.log(producto)
-            contenedor.innerHTML += `<div class="producto">
-            <img id="imagen" src="${producto.image}" />
-            <div class="pContenido">${producto.name} -  ${producto.cost} ${producto.currency}
-            <br>
-            <div id="pDes">${producto.description}</div>
-            <div class="vendidos">
-            Vendidos: ${producto.soldCount}
-            </div>
-            </div>
-            </div>`;
-            
-        }
-        
-        
-    })
- 
-     
+        mostrarElementos(productos)
+    })      
 }
+
+function mostrarElementos(dato){
+contenedor.innerHTML = `<p class="titulo">Productos</p> <br> 
+<p class="sub-titulo">Verás aqui todos los productos de la categoría <span class="sp">Autos</span></p>` 
+for(let producto of dato){
+console.log(producto)
+contenedor.innerHTML += `<div class="producto">
+<img id="imagen" src="${producto.image}" />
+<div class="pContenido">${producto.name} -  ${producto.cost} ${producto.currency}
+<br>
+<div id="pDes">${producto.description}</div>
+<div class="vendidos">
+Vendidos: ${producto.soldCount}
+</div>
+</div>
+</div>`;       
+}       
+}
+
 obtenerProductos(); 
 
 
