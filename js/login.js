@@ -38,6 +38,6 @@ boton.addEventListener("click", function(e){
       error();
    }
    else {
-      location.replace("https://leandrofernandez1.github.io/e-comerce/")
+      location.replace("https://leandrofernandez1.github.io/e-comerce/index2.html")
    }
 })
