@@ -1,5 +1,5 @@
 const API = "https://japceibal.github.io/emercado-api/cats_products/101.json"; 
-const contenedor = document.querySelector(".pb-5")
+const contenedor = document.querySelector("#cont-products")
 
 
 function obtenerProductos(){
