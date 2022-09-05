@@ -39,3 +39,12 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+// Entrega 2
+const usuario = document.getElementById("usuario");
+usuario.innerHTML = ""
+
+window.addEventListener("DOMContentLoaded", () => {
+    usuario.innerHTML = localStorage.getItem("text");
+}
+);

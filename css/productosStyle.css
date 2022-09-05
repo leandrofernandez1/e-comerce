@@ -44,7 +44,39 @@
 }
 
 .vendidos {
-    margin-top: 80px;
+    display: flex;
     font-size: 15px;
+    padding-top: 70px;
+}
+
+.precioYbuscar {
+    display: flex;
+    justify-content: center;
+    gap: 370px;
+    margin-right: 7em;
+    margin-left: 110px;
+}
+
+
+
+#precioMin, #precioMax {
+    width: 90px;
+}
+
+#btnFiltrar, #btnPrecioMax, #btnPrecioMin, #relevancia {
+    background-color: rgb(238, 238, 238);
+    border: 1px solid black;
+}
+
+.orden_precio {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-right: 7em;
+    margin-bottom: 5px;
+}
+
+.flechita {
+    width: 20px;
 }
 

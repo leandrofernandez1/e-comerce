@@ -21,6 +21,14 @@ boton.addEventListener("click", function(e){
       error();
    }
    else {
-      location.replace("https://leandrofernandez1.github.io/e-comerce/index2.html")
+      location.replace("/index2.html")
    }
 })
+
+
+// Entrega 2
+boton.addEventListener("click", (evt) => {
+   if (email.value) localStorage.setItem("text", email.value)
+   else {localStorage.removeItem("text")}
+   }
+ );

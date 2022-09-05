@@ -32,6 +32,7 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#" id="usuario"></a>
           </li>
         </ul>
       </div>
@@ -39,6 +40,26 @@
   </nav>
   <main class="pb-5 container">
     <div class="container">
+      <p class="titulo">Productos</p>
+      <div class="orden_precio">
+         <p>Precio</p>
+         <button id="btnPrecioMax"><img src="img/flecha-hacia-arriba.png" alt="flecha-hacia-arriba" class="flechita"></button>
+         <button id="btnPrecioMin"><img src="img/flecha-hacia-abajo.png" alt="flecha-hacia-abajo" class="flechita"></button>
+         <button id="relevancia">Relevancia <img src="img/flecha-hacia-abajo.png" alt="flecha-hacia-abajo" class="flechita"></button>
+      </div>
+        
+        <div class="precioYbuscar">
+          <div class="buscador">
+              <input type="search" name="search" id="search" placeholder="Busca aqui">
+          </div>
+           <div class="precio">
+              <label for="precio">Precio</label>
+              <input type="text" name="precio" id="precioMin">
+              <input type="text" name="precio" id="precioMax">
+              <button id="btnFiltrar">Filtrar</button>
+           </div>
+         </div>
+     
      <div id="cont-products">
      </div>
       </div>
