@@ -80,3 +80,10 @@
     width: 20px;
 }
 
+.productos {
+    padding: 0; 
+    border: none; 
+    background: none;
+    width: 100%;
+}
+

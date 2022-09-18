@@ -10,6 +10,8 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/products-info-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -29,19 +31,34 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
-            <a class="nav-link" href="#" id="usuario"></a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#" id="usuario"></a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+    <div class="container" id="container">
+    </div>
+    <div class="comentarios" id="comentarios">
+      <ul id="listaComentarios"></ul>
+    </div>
+    <div class="agregar-comentarios">
+      <p id="comentar">Comentar</p>
+      <p>Tu opinión:</p>
+      <textarea name="textarea" cols="70" rows="2" class="envio-comentario" id="comentarioTexto"></textarea>
+      <p>Tu puntuación:</p>
+      <select id="select">
+        <option selected disabled>--Elige un puntaje--</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+   </select>
+   <button id="enviarComentario" class="boton">Enviar</button>
     </div>
   </main>
   <footer class="text-muted">

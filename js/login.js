@@ -21,7 +21,7 @@ boton.addEventListener("click", function(e){
       error();
    }
    else {
-      location.replace("/index2.html")
+      location.replace("index2.html");
    }
 })
 
