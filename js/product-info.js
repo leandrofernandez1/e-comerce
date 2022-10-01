@@ -6,42 +6,82 @@ const contComentarios = document.querySelector("#listaComentarios");
 const enviarComentario = document.querySelector("#enviarComentario");
 const comentarioTexto = document.querySelector("#comentarioTexto");
 const select = document.querySelector("#select");
+const contProductosRelacionados = document.querySelector(".productos-relacionados");
 
-
+// Fetch prodcts-info
 fetch(productsInfo)
 .then (resultado => {
     return resultado.json();
 })
  .then (datos => {
-    container.innerHTML += `<h1>${datos.name}</h1><hr>
+    const { name, cost, description, category, soldCount, images, relatedProducts } = datos;
+    let htmlContentToAppend =  "";
+    htmlContentToAppend += `<h1>${name}</h1><hr>
                             <div>
                             <p><b>Precio:</b></p> 
-                            <p>${datos.cost}</p>
+                            <p>${cost}</p>
                             </div>
                             <div>
                             <p><b>Descripción:</b></p> 
-                            <p>${datos.description}</p>
+                            <p>${description}</p>
                             </div>
                             <div>
                             <p><b>Categoría:</b></p> 
-                            <p>${datos.category}</p>
+                            <p>${category}</p>
                             </div>
                             <div>
                             <p><b>Cantidad de vendidos:</b></p> 
-                            <p>${datos.soldCount}</p>
+                            <p>${soldCount}</p>
                             </div>
                             <p><b>Imagenes ilustrativas:</b></p>
                             `
-                            for (let imagen of datos.images){
-                            container.innerHTML += `<img src="${imagen}" id="imgProductos"></img>`
-                            }
 
+                            //Desafiate 4
+                            htmlContentToAppend += `
+                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="${images[0]}" class="d-block w-100">
+                              </div>`
 
+                               
+                              for (let i = 1; i < images.length; i++){
+                              htmlContentToAppend += `<div class="carousel-item">
+                                <img src="${images[i]}" class="d-block w-100">
+                              </div>`
+                              }
+
+                              htmlContentToAppend += 
+                            `</div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                            </div>` 
+
+                            container.innerHTML += htmlContentToAppend;
+                                                   
+//Entrega 4 Producto relacionado
+for (let productoRelacionado of relatedProducts){
+    const { name, image, id } = productoRelacionado;
+    contProductosRelacionados.innerHTML += `
+                       <button class="btnProductosRelacionados" onclick="setPoductoID(${id})">
+                       <img src="${image}" class="imgProductosRelacionados"></img>
+                       <p>${name}</p>
+                       </button>
+                       `
+}
+                                        
+                                                                              
 
 });
 
 
-
+// Fetch comentarios
 fetch(comentarios)
 .then (resultado => {
     return resultado.json();
@@ -69,7 +109,7 @@ fetch(comentarios)
 })
 
 
-    
+// Desafiate 3
 enviarComentario.addEventListener("click", () => {
     let calificacion = select.options[select.selectedIndex].value;
     let today = new Date();
@@ -88,6 +128,12 @@ enviarComentario.addEventListener("click", () => {
 })
   
 
+// Entrega 4
+
+function setPoductoID(id) {
+    localStorage.setItem("productoID", id);
+    window.location = "product-info.html"
+}
 
      
 

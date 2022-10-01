@@ -3,13 +3,16 @@
 .producto {
     display: flex;
     justify-content: left;
-    border: double 4px black;
-    width: 80%;
+    border: solid 1px black;
     height: 12em;
     margin: 1em auto;
     font-family: 'Times New Roman', Times, serif;
-    background-color: azure;
+    background-color: white;
     padding: 10px;
+}
+
+.producto:hover {
+    background-color: rgb(228, 227, 227);
 }
 
  #imagen {
@@ -64,7 +67,7 @@
 }
 
 #btnFiltrar, #btnPrecioMax, #btnPrecioMin, #relevancia {
-    background-color: rgb(238, 238, 238);
+    background-color: white;
     border: 1px solid black;
 }
 

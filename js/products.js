@@ -92,7 +92,7 @@ function obtenerProductos(){
             
         })
         
-        //buscador
+        //buscador-Desafiate 2
         inputBuscar.addEventListener("input", (e) => {              
         
             limpiar();

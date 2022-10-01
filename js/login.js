@@ -29,6 +29,5 @@ boton.addEventListener("click", function(e){
 // Entrega 2
 boton.addEventListener("click", (evt) => {
    if (email.value) localStorage.setItem("text", email.value)
-   else {localStorage.removeItem("text")}
    }
  );
