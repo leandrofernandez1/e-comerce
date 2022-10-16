@@ -25,10 +25,12 @@ for(let producto of dato){
 
 const { id, image, name, cost, currency, description, soldCount } = producto;
 
-contenedor.innerHTML += `<button class="productos" onclick="setPoductoID(${id})">
+contenedor.innerHTML +=
+
+`<button class="productos" onclick="setPoductoID(${id})">
 <div class="producto">
 <img id="imagen" src="${image}" />
-<div class="pContenido">${name} -  ${cost} ${currency}
+<div class="pContenido text-start">${name} -  ${cost} ${currency}
 <br>
 <div id="pDes">${description}</div>
 <div class="vendidos">

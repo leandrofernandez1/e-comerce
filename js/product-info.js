@@ -8,15 +8,34 @@ const comentarioTexto = document.querySelector("#comentarioTexto");
 const select = document.querySelector("#select");
 const contProductosRelacionados = document.querySelector(".productos-relacionados");
 
+//Desafiate 5 
+let arrCarrito = [];
+
+window.addEventListener("DOMContentLoaded", () => {  
+
+  if(localStorage.getItem("carrito")){
+    
+    let itemsCarrito = localStorage.getItem("carrito");
+    let itemsCarr = JSON.parse(itemsCarrito);
+    arrCarrito = arrCarrito.concat(itemsCarr);   
+  }
+}) 
+
+
+
+
+
 // Fetch prodcts-info
 fetch(productsInfo)
 .then (resultado => {
     return resultado.json();
 })
  .then (datos => {
-    const { name, cost, description, category, soldCount, images, relatedProducts } = datos;
+    const { name, cost, description, category, soldCount, images, relatedProducts, currency, id } = datos;
     let htmlContentToAppend =  "";
-    htmlContentToAppend += `<h1>${name}</h1><hr>
+    htmlContentToAppend += `<div class="d-flex justify-content-between"><h1>${name}</h1>
+                           </div>                         
+                           <hr>
                             <div>
                             <p><b>Precio:</b></p> 
                             <p>${cost}</p>
@@ -76,7 +95,36 @@ for (let productoRelacionado of relatedProducts){
                        `
 }
                                         
-                                                                              
+                                        
+//Entrega 5 boton de comprar.
+document.querySelector("#comprar").addEventListener("click", ()=>{
+     let image = images[0];
+     let unitCost = cost;
+     let nuevoProducto = {name, unitCost, image, currency, id}; 
+
+     //Corrobro si el prodcuto existe, si ya fue agregado al carrito no lo vuelve a agregar
+     const resultado = arrCarrito.some( item => {
+      return item.id === id;
+     });
+     if(resultado == false){
+      arrCarrito.push(nuevoProducto);
+      alert("Agregado al carrito con exito");
+     } else if (resultado == true){
+      alert("Ya has agregado este producto al carrito")
+     };
+    
+     localStorage.setItem("carrito", JSON.stringify(arrCarrito));
+     
+    /*  location.replace("cart.html");  */
+
+})
+
+
+
+document.querySelector("#borrar").addEventListener("click", ()=>{
+  localStorage.removeItem("carrito");
+  alert("Carrito Vaciado");
+});
 
 });
 
@@ -114,7 +162,7 @@ enviarComentario.addEventListener("click", () => {
     let calificacion = select.options[select.selectedIndex].value;
     let today = new Date();
     let now = today.toLocaleString();
-    const user = localStorage.getItem("text");
+    const user = localStorage.getItem("usuario");
     contComentarios.innerHTML += `<li class="li"><b>${user}</b> - ${now}</li>`  
     contComentarios.innerHTML += `<li class="li">${comentarioTexto.value}</li>`;
     contComentarios.innerHTML += `<li class="li">Calificación:</li>`;
@@ -136,4 +184,3 @@ function setPoductoID(id) {
 }
 
      
-

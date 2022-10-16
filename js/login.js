@@ -28,6 +28,6 @@ boton.addEventListener("click", function(e){
 
 // Entrega 2
 boton.addEventListener("click", (evt) => {
-   if (email.value) localStorage.setItem("text", email.value)
+   if (email.value) localStorage.setItem("usuario", email.value)
    }
  );

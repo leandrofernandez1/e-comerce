@@ -82,3 +82,8 @@ h3 {
     background-color: rgb(231, 228, 228);
 }
 
+.botones {
+        position: relative;
+        top: 70px;
+        right: 100px;   
+}
