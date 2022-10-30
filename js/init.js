@@ -6,6 +6,25 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+const url_cart = CART_INFO_URL + 25801 + EXT_TYPE;
+
+
+// ITEM DEL CARRITO PRECARGADO
+window.addEventListener("DOMContentLoaded", () => {  
+
+  if(!localStorage.getItem("carrito"))
+   {
+      fetch(url_cart)
+        .then(resultado => {
+          return resultado.json();
+        })
+        .then(productosDelCarrito => {
+          const { articles } = productosDelCarrito;
+          localStorage.setItem("carrito", JSON.stringify(articles));
+        })
+    
+  }
+}) 
 //Entrega 4
 const usuario = document.querySelector("#usuario");
 

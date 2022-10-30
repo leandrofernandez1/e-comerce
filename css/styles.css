@@ -188,3 +188,50 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+#formulario-de-envio{
+  margin-bottom: 40px;
+}
+
+#contenedor-todo {
+  padding-bottom: 20px;
+  margin: auto;
+  margin-top: 20px;
+  width: 80%;
+  border: 1px solid black;
+}
+
+#lista-costo {
+  list-style: none;
+}
+
+#lista-costo li {
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#lista-costo li p {
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.boton-pago {
+  border-style: none;
+  text-decoration: underline;
+  background-color: white;
+  color: blue;
+}
+
+#btnFinalizarCompra{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#btnFinalizarCompra button{
+  width: 80%;
+}

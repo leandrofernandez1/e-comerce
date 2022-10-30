@@ -1,4 +1,3 @@
-
 const productsInfo = `${PRODUCT_INFO_URL}${localStorage.getItem("productoID")}${EXT_TYPE}`;
 const container = document.querySelector("#container");
 const comentarios = `${PRODUCT_INFO_COMMENTS_URL}${localStorage.getItem("productoID")}${EXT_TYPE}`;
@@ -34,23 +33,23 @@ fetch(productsInfo)
     const { name, cost, description, category, soldCount, images, relatedProducts, currency, id } = datos;
     let htmlContentToAppend =  "";
     htmlContentToAppend += `<div class="d-flex justify-content-between"><h1>${name}</h1>
-                           </div>                         
-                           <hr>
+                            </div>                         
+                            <hr>
                             <div>
-                            <p><b>Precio:</b></p> 
-                            <p>${cost}</p>
+                             <p><b>Precio:</b></p> 
+                             <p>${cost}</p>
                             </div>
                             <div>
-                            <p><b>Descripción:</b></p> 
-                            <p>${description}</p>
+                             <p><b>Descripción:</b></p> 
+                             <p>${description}</p>
                             </div>
                             <div>
-                            <p><b>Categoría:</b></p> 
-                            <p>${category}</p>
+                             <p><b>Categoría:</b></p> 
+                             <p>${category}</p>
                             </div>
                             <div>
-                            <p><b>Cantidad de vendidos:</b></p> 
-                            <p>${soldCount}</p>
+                             <p><b>Cantidad de vendidos:</b></p> 
+                              <p>${soldCount}</p>
                             </div>
                             <p><b>Imagenes ilustrativas:</b></p>
                             `
@@ -100,8 +99,11 @@ for (let productoRelacionado of relatedProducts){
 document.querySelector("#comprar").addEventListener("click", ()=>{
      let image = images[0];
      let unitCost = cost;
-     let nuevoProducto = {name, unitCost, image, currency, id}; 
-
+     let count = 1;
+     let nuevoProducto = {name, unitCost, image, currency, id, count}; 
+     if(currency == "UYU"){
+      nuevoProducto.costoDolares = unitCost / 40;
+     }
      //Corrobro si el prodcuto existe, si ya fue agregado al carrito no lo vuelve a agregar
      const resultado = arrCarrito.some( item => {
       return item.id === id;
@@ -115,16 +117,10 @@ document.querySelector("#comprar").addEventListener("click", ()=>{
     
      localStorage.setItem("carrito", JSON.stringify(arrCarrito));
      
-    /*  location.replace("cart.html");  */
+    
 
 })
 
-
-
-document.querySelector("#borrar").addEventListener("click", ()=>{
-  localStorage.removeItem("carrito");
-  alert("Carrito Vaciado");
-});
 
 });
 
