@@ -1,3 +1,4 @@
+//Constantes
 const contenedor = document.querySelector("#cont-products");
 // Entrega 2
 const product = localStorage.getItem("catID");
@@ -9,16 +10,18 @@ const relevancia = document.querySelector("#relevancia");
 const precioMax = document.querySelector("#precioMax");
 const precioMin = document.querySelector("#precioMin");
 const inputBuscar = document.querySelector("#search");
-//
+
+
+//Funciones
+// Entrega 3
+function setPoductoID(id) {
+    localStorage.setItem("productoID", id);
+    window.location = "product-info.html"
+}
 
 function limpiar() {
     contenedor.innerHTML = "";
 }
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    obtenerProductos();
-})
 
 function mostrarElementos(dato) {
     for (let producto of dato) {
@@ -41,7 +44,6 @@ Vendidos: ${soldCount}
 </button>`;
     }
 }
-
 
 function obtenerProductos() {
     fetch(API)
@@ -124,24 +126,12 @@ function obtenerProductos() {
                         limpiar();
                         mostrarElementos(productos);
                     }
-
                 }
-
             })
-
-
         })
-
-
 }
 
-
-
-// Entrega 3
-
-function setPoductoID(id) {
-    localStorage.setItem("productoID", id);
-    window.location = "product-info.html"
-}
-
-
+//Eventos
+document.addEventListener("DOMContentLoaded", () => {
+    obtenerProductos();
+})

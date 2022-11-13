@@ -235,3 +235,12 @@ a.custom-card:hover {
 #btnFinalizarCompra button{
   width: 80%;
 }
+
+.delete {
+  width: 20px;
+}
+
+.btnDelete {
+  border-style: none;
+  background-color: white;
+}

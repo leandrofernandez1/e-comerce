@@ -1,3 +1,4 @@
+//constantes y varaibles
 const tbody = document.querySelector("#tbody");
 const transferencia = document.querySelector("#Transferencia");
 const inputCuentaBanco = document.querySelector("#cuenta-banco");
@@ -17,24 +18,12 @@ const inputCalle = document.querySelector("#calle");
 const inputNumero = document.querySelector("#numero");
 const inputEsquina = document.querySelector("#esquina");
 const inputsEnvio = document.querySelectorAll('input[name="envio"]');
-
-
+const btnBorrar = document.querySelector("#borrar");
 let arrCarrito = [];
 
-window.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("carrito")) {
-
-    let itemsCarrito = localStorage.getItem("carrito");
-    let itemsCarr = JSON.parse(itemsCarrito);
-    arrCarrito = arrCarrito.concat(itemsCarr);
-    showProducts(arrCarrito);
-  }
-
-})
-
+//Funciones
 //Desafiate 5 Muestro los productos del carrito
 const showProducts = (items) => {
-
   let i = -1;
   let sub = 0
   for (let producto of items) {
@@ -47,8 +36,8 @@ const showProducts = (items) => {
       costoDolares = unitCost;
     }
 
-    let append = ``;
-    append += `<tr>
+    let htmlContentToAppend = ``;
+    htmlContentToAppend += `<tr>
                     <td>
                       <img src="${image}" width="30px">
                     </td>
@@ -66,41 +55,18 @@ const showProducts = (items) => {
                     <td>
                       <span class="span">${costoDolares}</span>
                       <span> USD</span>  
-                      <button onclick="borrar(${i})">E</button> 
+                      <button class="btnDelete" onclick="borrar(${i})"><img src="img/delete.png" class="delete"></button> 
                     </td>
                 </tr>`
-    tbody.innerHTML += append;
+    tbody.innerHTML += htmlContentToAppend;
 
     sub += costoDolares;
-
-    subTotal.textContent = sub.toFixed(2) + " USD";
-
+    subTotal.textContent = sub + " USD";
   }
-
   totalCompra.textContent = subTotal.textContent + costoEnvio.textContent;
-
 }
 
-
-formularioDeEnvio.addEventListener("change", () => {
-  let elementoActivo = document.querySelector('input[name="envio"]:checked').value;
-  let sub = document.querySelector("#subTotal").textContent;
-  let subParseado = parseInt(sub);
-  if (elementoActivo == `premium`) {
-    costoEnvio.innerHTML = subParseado * 0.15 + " USD";
-    totalCompra.innerHTML = (subParseado * 0.15) + subParseado + " USD";
-  } else if (elementoActivo == `expres`) {
-    costoEnvio.innerHTML = subParseado * 0.07 + " USD";
-    totalCompra.innerHTML = (subParseado * 0.07) + subParseado + " USD";
-  } else if (elementoActivo == `standard`) {
-    costoEnvio.innerHTML = subParseado * 0.05 + " USD";
-    totalCompra.innerHTML = (subParseado * 0.05) + subParseado + " USD";
-  }
-})
-
-
-
-const calculoPrecios = () => {
+function calculoPrecios(){
   let span = document.querySelectorAll(".span");
   let precio = 0;
   let sub = [];
@@ -132,9 +98,7 @@ const calculoPrecios = () => {
   }
 }
 
-
-
-const itemsCarrito = (i, costos) => {
+function itemsCarrito(i, costos) {
   let currency = document.querySelectorAll(".currency")[i].innerHTML;
   let inputs = (document.querySelectorAll(".input")[i].value * parseInt(costos));
   let span = document.querySelectorAll(".span")[i];
@@ -142,7 +106,6 @@ const itemsCarrito = (i, costos) => {
   spanCurrency.textContent = currency;
   span.textContent = inputs;
 }
-
 
 //desafio 6
 function borrar(i) {
@@ -155,15 +118,7 @@ function borrar(i) {
   }
 }
 
-document.querySelector("#borrar").addEventListener("click", () => {
-  localStorage.removeItem("carrito");
-  alert("Carrito Vaciado");
-  location.replace("cart.html")
-});
-window.addEventListener("change", () => {
-  metodoDePago();
-})
-
+//Funcion Modal
 function metodoDePago() {
   if (tarjeta.checked) {
     inputCuentaBanco.disabled = true;
@@ -177,6 +132,43 @@ function metodoDePago() {
     inputCuentaBanco.disabled = false;
   }
 }
+
+// Eventos
+window.addEventListener("change", () => {
+  metodoDePago();
+})
+
+window.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("carrito")) {
+    let itemsCarrito = localStorage.getItem("carrito");
+    let itemsCarr = JSON.parse(itemsCarrito);
+    arrCarrito = arrCarrito.concat(itemsCarr);
+    showProducts(arrCarrito);
+  }
+})
+
+
+btnBorrar.addEventListener("click", () => {
+  localStorage.removeItem("carrito");
+  alert("Carrito Vaciado");
+  location.replace("cart.html")
+});
+
+formularioDeEnvio.addEventListener("change", () => {
+  let elementoActivo = document.querySelector('input[name="envio"]:checked').value;
+  let sub = document.querySelector("#subTotal").textContent;
+  let subParseado = parseInt(sub);
+  if (elementoActivo == `premium`) {
+    costoEnvio.innerHTML = subParseado * 0.15 + " USD";
+    totalCompra.innerHTML = (subParseado * 0.15) + subParseado + " USD";
+  } else if (elementoActivo == `expres`) {
+    costoEnvio.innerHTML = subParseado * 0.07 + " USD";
+    totalCompra.innerHTML = (subParseado * 0.07) + subParseado + " USD";
+  } else if (elementoActivo == `standard`) {
+    costoEnvio.innerHTML = subParseado * 0.05 + " USD";
+    totalCompra.innerHTML = (subParseado * 0.05) + subParseado + " USD";
+  }
+})
 
 btnFinalizarCompra.addEventListener("click", (e) => {
   e.preventDefault();
@@ -256,5 +248,3 @@ btnFinalizarCompra.addEventListener("click", (e) => {
   }
 
 })
-
-
