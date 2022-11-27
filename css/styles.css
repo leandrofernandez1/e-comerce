@@ -244,3 +244,13 @@ a.custom-card:hover {
   border-style: none;
   background-color: white;
 }
+
+#perfil {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#imgPerfil {
+  width: 70px;
+}

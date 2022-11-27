@@ -66,7 +66,7 @@ const showProducts = (items) => {
   totalCompra.textContent = subTotal.textContent + costoEnvio.textContent;
 }
 
-function calculoPrecios(){
+function calculoPrecios() {
   let span = document.querySelectorAll(".span");
   let precio = 0;
   let sub = [];
@@ -175,24 +175,24 @@ btnFinalizarCompra.addEventListener("click", (e) => {
   //Inputs
   if (inputCalle.value == "") {
     inputCalle.classList.add("is-invalid");
-  }else{
+  } else {
     inputCalle.classList.add("validado");
   }
   if (inputNumero.value == "") {
     inputNumero.classList.add("is-invalid");
-  }else{
+  } else {
     inputNumero.classList.add("validado");
   }
   if (inputEsquina.value == "") {
     inputEsquina.classList.add("is-invalid");
-  }else{
+  } else {
     inputEsquina.classList.add("validado");
   }
 
   //Radios
   if (document.querySelector("#premium").checked || document.querySelector("#expres").checked
     || document.querySelector("#standard").checked) {
-      formularioDeEnvio.classList.add("validado");
+    formularioDeEnvio.classList.add("validado");
   } else {
     const alerta = document.querySelector(".alerta1");
     if (alerta) {
@@ -203,23 +203,23 @@ btnFinalizarCompra.addEventListener("click", (e) => {
     error.classList.add("text-danger", "alerta1");
     formularioDeEnvio.appendChild(error);
   }
- 
+
   //Metodo de pago
   if (document.querySelector("#tarjeta").checked == false &&
     document.querySelector("#Transferencia").checked == false) {
-      const alerta = document.querySelector(".alerta2");
-      if (alerta) {
-        alerta.remove();
-      }
-      let error = document.createElement("P");
-      error.textContent = "seleccione una forma de pago";
-      error.classList.add("text-danger", "alerta2");
-      document.querySelector("#modal").appendChild(error);
-  }else{
+    const alerta = document.querySelector(".alerta2");
+    if (alerta) {
+      alerta.remove();
+    }
+    let error = document.createElement("P");
+    error.textContent = "seleccione una forma de pago";
+    error.classList.add("text-danger", "alerta2");
+    document.querySelector("#modal").appendChild(error);
+  } else {
     document.querySelector(".modal-content").classList.add("validado");
   }
-  if((inputNumeroTarjeta.value == "" || inputvencimiento.value == "" || inputCodigo.value == "")
-  && (inputCuentaBanco.value == "")){
+  if ((inputNumeroTarjeta.value == "" || inputvencimiento.value == "" || inputCodigo.value == "")
+    && (inputCuentaBanco.value == "")) {
     const alerta = document.querySelector(".alerta3");
     if (alerta) {
       alerta.remove();
@@ -228,20 +228,20 @@ btnFinalizarCompra.addEventListener("click", (e) => {
     error.textContent = "Campos Vacios";
     error.classList.add("text-danger", "alerta3");
     document.querySelector(".modal-body").appendChild(error);
-  }else{
+  } else {
     document.querySelector(".modal-body").classList.add("validado");
   }
 
 
-  if(inputCalle.classList.contains("validado") && 
-  inputNumero.classList.contains("validado") && 
-  inputEsquina.classList.contains("validado") &&
-  formularioDeEnvio.classList.contains("validado") &&
-  document.querySelector(".modal-content").classList.contains("validado") &&
-  document.querySelector(".modal-body").classList.contains("validado")
-  ){
+  if (inputCalle.classList.contains("validado") &&
+    inputNumero.classList.contains("validado") &&
+    inputEsquina.classList.contains("validado") &&
+    formularioDeEnvio.classList.contains("validado") &&
+    document.querySelector(".modal-content").classList.contains("validado") &&
+    document.querySelector(".modal-body").classList.contains("validado")
+  ) {
     document.querySelector("#mensajeExito").classList.remove("visually-hidden")
-    setTimeout(()=>{
+    setTimeout(() => {
       location.replace("index2.html");
       localStorage.removeItem("carrito");
     }, 3000)

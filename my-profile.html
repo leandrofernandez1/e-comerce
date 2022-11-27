@@ -53,7 +53,10 @@
   </nav>
   <main>
     <div class="container">
-      <h2 class="m-3">Perfil</h2>
+      <div id="perfil">
+        <h2 class="m-3">Perfil</h2>
+        <img src="img/usuario.png" alt="img-perfil" id="imgPerfil">
+      </div>
       <hr>
       <div class="container">
         <div class="row m-3">
@@ -93,6 +96,10 @@
           <div class="col-6">
             <label for="inputTelefono" class="form-label">Telefono de contacto</label>
             <input type="number" class="form-control" aria-label="Telefono de contacto" id="inputTelefono">
+          </div>
+          <div class="col-6">
+            <label for="foto" class="form-label">Agrega una foto de perfil</label>
+            <input type="file" accept="image/*" class="form-control" aria-label="foto" id="inputImg">
           </div>
           <hr class="mt-3">
           <div class="mt-2 d-flex justify-content-end">

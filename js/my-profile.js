@@ -6,6 +6,14 @@ const inputPrimerApellido = document.querySelector("#inputPrimerApellido");
 const inputSegundoApellido = document.querySelector("#inputSegundoApellido");
 const inputTelefono = document.querySelector("#inputTelefono");
 const btnGuardarCambios = document.querySelector("#btnGuardarCambios");
+const inputImg = document.querySelector("#inputImg");
+const imgPerfil = document.querySelector("#imgPerfil");
+const reader = new FileReader();
+
+reader.onload = function (event) {
+    imgPerfil.src = event.target.result;
+    localStorage.setItem("imgPerfil", event.target.result);
+};
 
 //Eventos
 document.addEventListener("DOMContentLoaded", () => {
@@ -15,8 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
 btnGuardarCambios.addEventListener("click", () => {
     guardarDatosDelUsuario();
     validarInputs();
+    if (document.getElementById("inputImg").files.length > 0) {
+        reader.readAsDataURL(document.getElementById("inputImg").files[0]);
+    }
 })
-
 
 //Funciones
 
@@ -27,6 +37,10 @@ function traerDatosDelUsuario() {
     let primerApellido = localStorage.getItem("primerApellido");
     let segundoApellido = localStorage.getItem("segundoApellido");
     let numeroDeTelefono = localStorage.getItem("numeroDeTelefono");
+    let img = localStorage.getItem("imgPerfil");
+    if (localStorage.getItem("imgPerfil")) {
+        imgPerfil.src = img;
+    }
 
     inputNombre.value = primerNombre;
     inputSegundoNombre.value = segundoNombre;
@@ -48,7 +62,7 @@ function guardarDatosDelUsuario() {
     setTimeout(() => {
         location.replace("my-profile.html");
     }, 3000)
-}
+} 
 }
 
 function validarInputs() {
@@ -68,4 +82,3 @@ function validarInputs() {
         inputEmail.classList.remove("is-invalid");
     }
 }
-
